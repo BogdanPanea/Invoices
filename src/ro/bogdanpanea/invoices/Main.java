@@ -1,0 +1,39 @@
+package ro.bogdanpanea.invoices;
+
+
+import ro.bogdanpanea.invoices.POJOs.Company;
+import ro.bogdanpanea.invoices.POJOs.Product;
+import ro.bogdanpanea.invoices.services.GeneratingCompanies;
+import ro.bogdanpanea.invoices.services.GeneratingProducts;
+
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Subtask 1: Generate Companies
+        System.out.println("Subtask 1: Generate Companies :");
+
+        String[] names = {"a", "b", "c", "d", "e", "f", "g", "h"};
+        GeneratingCompanies generatingCompanies = new GeneratingCompanies();
+        generatingCompanies.generateCompanies(names);
+        for (Company company : generatingCompanies.getCompanyList()) {
+            System.out.println(company);
+        }
+
+        System.out.println("-----------------------------------------------------------------------------");
+
+        //Subtask 2: Generate Products
+        System.out.println("Subtask 2: Generate Products :");
+        GeneratingProducts generatingProducts = new GeneratingProducts();
+        generatingProducts.generateProducts();
+        for (Product s : generatingProducts.getProducts()) {
+            System.out.println(s);
+        }
+
+        System.out.println("-----------------------------------------------------------------------------");
+
+        //Subtask 3: Generate Invoices
+
+    }
+}
