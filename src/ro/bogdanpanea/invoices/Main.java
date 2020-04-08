@@ -2,8 +2,10 @@ package ro.bogdanpanea.invoices;
 
 
 import ro.bogdanpanea.invoices.POJOs.Company;
+import ro.bogdanpanea.invoices.POJOs.Invoice;
 import ro.bogdanpanea.invoices.POJOs.Product;
 import ro.bogdanpanea.invoices.services.GeneratingCompanies;
+import ro.bogdanpanea.invoices.services.GeneratingInvoices;
 import ro.bogdanpanea.invoices.services.GeneratingProducts;
 
 import java.util.List;
@@ -25,6 +27,8 @@ public class Main {
 
         //Subtask 2: Generate Products
         System.out.println("Subtask 2: Generate Products :");
+
+        System.out.println("Subtask 2: Generate Products :");
         GeneratingProducts generatingProducts = new GeneratingProducts();
         generatingProducts.generateProducts();
         for (Product s : generatingProducts.getProducts()) {
@@ -34,6 +38,20 @@ public class Main {
         System.out.println("-----------------------------------------------------------------------------");
 
         //Subtask 3: Generate Invoices
+        System.out.println("Subtask 3: Generate Invoices :");
+
+        GeneratingInvoices generatingInvoices = new GeneratingInvoices();
+        generatingInvoices.setCompanies(generatingCompanies.getCompanyList());
+        generatingInvoices.setProducts(generatingProducts.getProducts());
+        generatingInvoices.generateInvoices();
+        for (Invoice i : generatingInvoices.getInvoices()) {
+            System.out.println(i);
+        }
+
+        System.out.println("-----------------------------------------------------------------------------");
+
+        //Subtask 4: Equality vs. Identity
+        System.out.println("Subtask 4: Equality vs. Identity :");
 
     }
 }

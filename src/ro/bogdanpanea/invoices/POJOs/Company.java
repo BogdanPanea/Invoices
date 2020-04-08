@@ -1,20 +1,18 @@
 package ro.bogdanpanea.invoices.POJOs;
 
 public class Company {
+    private int companyId;
     private String name;
     private long phoneNumber;
 
-    public Company(String name, long phoneNumber) {
+    public Company(int companyId, String name, long phoneNumber) {
+        this.companyId = companyId;
         this.name = name;
         this.phoneNumber = phoneNumber;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPhoneNumber(long phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public int getCompanyId() {
+        return companyId;
     }
 
     public String getName() {
@@ -28,7 +26,8 @@ public class Company {
     @Override
     public String toString() {
         return "Company{" +
-                "name='" + name + '\'' +
+                "companyId=" + companyId +
+                ", name='" + name + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 '}';
     }

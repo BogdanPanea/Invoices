@@ -21,7 +21,7 @@ public class GeneratingCompanies {
         generatingCombinations.generateCombinations(8, 3);
         List<int[]> generatetCombinations = generatingCombinations.getCombinationsList();
         for (int counter = 0; counter < 25; counter++) {
-            companyList.add(new Company(words[generatetCombinations.get(counter)[0]] + " " + words[generatetCombinations.get(counter)[1]] + " " + words[generatetCombinations.get(counter)[2]], generatePhoneNumber()));
+            companyList.add(new Company(counter, words[generatetCombinations.get(counter)[0]] + " " + words[generatetCombinations.get(counter)[1]] + " " + words[generatetCombinations.get(counter)[2]], generatePhoneNumber()));
         }
     }
 
