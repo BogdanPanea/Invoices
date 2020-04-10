@@ -1,8 +1,8 @@
 package ro.bogdanpanea.invoices.POJOs;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 public class Invoice {
     private int invoiceNumber;
@@ -11,6 +11,7 @@ public class Invoice {
     private double price;
     private LocalDate dueDate;
     private LocalDate payDate;
+    private boolean duplicate;
 
     public Invoice(int invoiceNumber, Company seller, List<Product> products, LocalDate dueDate, LocalDate payDate) {
         this.invoiceNumber = invoiceNumber;
@@ -30,13 +31,13 @@ public class Invoice {
         this.price = totalPrice;
     }
 
-    public Invoice(int invoiceNumber, Company seller, List<Product> products, double price, LocalDate dueDate, LocalDate payDate) {
-        this.invoiceNumber = invoiceNumber;
-        this.seller = seller;
-        this.products = products;
-        this.price = price;
-        this.dueDate = dueDate;
-        this.payDate = payDate;
+    public Invoice(Invoice invoice) {
+        this.invoiceNumber = invoice.getInvoiceNumber();
+        this.seller = invoice.getSeller();
+        this.products = invoice.products;
+        this.price = invoice.getPrice();
+        this.dueDate = invoice.dueDate;
+        this.payDate = invoice.payDate;
     }
 
     public int getInvoiceNumber() {
@@ -63,6 +64,10 @@ public class Invoice {
         return payDate;
     }
 
+    public void setInvoiceNumber(int invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
+    }
+
     @Override
     public String toString() {
         return "Invoice{" +
@@ -72,6 +77,32 @@ public class Invoice {
                 ", price=" + price +
                 ", dueDate=" + dueDate +
                 ", payDate=" + payDate +
+                ", duplicate=" + duplicate +
                 '}';
+    }
+
+    public boolean isDuplicate() {
+        return duplicate;
+    }
+
+    public void setDuplicate(boolean duplicate) {
+        this.duplicate = duplicate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Invoice invoice = (Invoice) o;
+        return Double.compare(invoice.price, price) == 0 &&
+                Objects.equals(seller, invoice.seller) &&
+                Objects.equals(products, invoice.products) &&
+                Objects.equals(dueDate, invoice.dueDate) &&
+                Objects.equals(payDate, invoice.payDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(seller, products, price, dueDate, payDate);
     }
 }

@@ -4,10 +4,12 @@ package ro.bogdanpanea.invoices;
 import ro.bogdanpanea.invoices.POJOs.Company;
 import ro.bogdanpanea.invoices.POJOs.Invoice;
 import ro.bogdanpanea.invoices.POJOs.Product;
+import ro.bogdanpanea.invoices.services.AddingANewInvoiceIvenIfItIsADuplicate;
 import ro.bogdanpanea.invoices.services.GeneratingCompanies;
 import ro.bogdanpanea.invoices.services.GeneratingInvoices;
 import ro.bogdanpanea.invoices.services.GeneratingProducts;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -52,6 +54,26 @@ public class Main {
 
         //Subtask 4: Equality vs. Identity
         System.out.println("Subtask 4: Equality vs. Identity :");
+
+        Invoice invoiceDuplicate;
+        List<Invoice> invoicesList;
+        List<Invoice> newInvoicelist;
+
+        invoicesList = generatingInvoices.getInvoices();
+        invoiceDuplicate = new Invoice(invoicesList.get(25));
+
+        AddingANewInvoiceIvenIfItIsADuplicate addingANewInvoiceIvenIfItIsADuplicate = new AddingANewInvoiceIvenIfItIsADuplicate(invoiceDuplicate, invoicesList);
+        addingANewInvoiceIvenIfItIsADuplicate.addANewInvoice();
+        for (Invoice i : addingANewInvoiceIvenIfItIsADuplicate.getInvoices()) {
+            System.out.println(i);
+        }
+
+        System.out.println("-----------------------------------------------------------------------------");
+
+        //Subtask 5: Ordered invoices
+        System.out.println("Subtask 5: Ordered invoices :");
+
+
 
     }
 }
