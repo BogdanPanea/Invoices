@@ -35,7 +35,7 @@ public class GeneratingInvoices {
 
     public LocalDate generatePayDate() {
         LocalDate date = LocalDate.now();
-        return date.minusDays(gerenateRandomInt(1, 5));
+        return date.minusDays(gerenateRandomInt(0, 4));
     }
 
     public List<Product> generateProductsList(int minRange, int maxRange, int minRangeProductId, int maxRangeProductId) {

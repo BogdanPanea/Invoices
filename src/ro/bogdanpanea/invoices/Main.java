@@ -9,7 +9,6 @@ import ro.bogdanpanea.invoices.services.GeneratingCompanies;
 import ro.bogdanpanea.invoices.services.GeneratingInvoices;
 import ro.bogdanpanea.invoices.services.GeneratingProducts;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
