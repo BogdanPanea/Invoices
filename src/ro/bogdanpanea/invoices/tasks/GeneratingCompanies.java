@@ -1,6 +1,7 @@
-package ro.bogdanpanea.invoices.services;
+package ro.bogdanpanea.invoices.tasks;
 
 import ro.bogdanpanea.invoices.POJOs.Company;
+import ro.bogdanpanea.invoices.services.GeneratingCombinations;
 
 import java.util.ArrayList;
 import java.util.List;

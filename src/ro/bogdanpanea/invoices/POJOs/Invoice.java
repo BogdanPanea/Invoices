@@ -10,15 +10,15 @@ public class Invoice {
     private List<Product> products;
     private double price;
     private LocalDate dueDate;
-    private LocalDate payDate;
+    private LocalDate paidDate;
     private boolean duplicate;
 
-    public Invoice(int invoiceNumber, Company seller, List<Product> products, LocalDate dueDate, LocalDate payDate) {
+    public Invoice(int invoiceNumber, Company seller, List<Product> products, LocalDate dueDate, LocalDate paidDate) {
         this.invoiceNumber = invoiceNumber;
         this.seller = seller;
         this.products = products;
         this.dueDate = dueDate;
-        this.payDate = payDate;
+        this.paidDate = paidDate;
 
         double totalPrice = 0.0;
         for (Product p : products) {
@@ -37,7 +37,7 @@ public class Invoice {
         this.products = invoice.products;
         this.price = invoice.getPrice();
         this.dueDate = invoice.dueDate;
-        this.payDate = invoice.payDate;
+        this.paidDate = invoice.paidDate;
     }
 
     public int getInvoiceNumber() {
@@ -60,8 +60,8 @@ public class Invoice {
         return dueDate;
     }
 
-    public LocalDate getPayDate() {
-        return payDate;
+    public LocalDate getPaidDate() {
+        return paidDate;
     }
 
     public void setInvoiceNumber(int invoiceNumber) {
@@ -76,7 +76,7 @@ public class Invoice {
                 ", products=" + products +
                 ", price=" + price +
                 ", dueDate=" + dueDate +
-                ", payDate=" + payDate +
+                ", paidDate=" + paidDate +
                 ", duplicate=" + duplicate +
                 '}';
     }
@@ -98,11 +98,11 @@ public class Invoice {
                 Objects.equals(seller, invoice.seller) &&
                 Objects.equals(products, invoice.products) &&
                 Objects.equals(dueDate, invoice.dueDate) &&
-                Objects.equals(payDate, invoice.payDate);
+                Objects.equals(paidDate, invoice.paidDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(seller, products, price, dueDate, payDate);
+        return Objects.hash(seller, products, price, dueDate, paidDate);
     }
 }

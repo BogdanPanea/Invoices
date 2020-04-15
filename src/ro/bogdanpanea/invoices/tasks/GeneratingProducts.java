@@ -1,8 +1,7 @@
-package ro.bogdanpanea.invoices.services;
+package ro.bogdanpanea.invoices.tasks;
 
 import ro.bogdanpanea.invoices.POJOs.Product;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

@@ -4,11 +4,11 @@ package ro.bogdanpanea.invoices;
 import ro.bogdanpanea.invoices.POJOs.Company;
 import ro.bogdanpanea.invoices.POJOs.Invoice;
 import ro.bogdanpanea.invoices.POJOs.Product;
-import ro.bogdanpanea.invoices.services.AddingANewInvoiceIvenIfItIsADuplicate;
-import ro.bogdanpanea.invoices.services.GeneratingCompanies;
-import ro.bogdanpanea.invoices.services.GeneratingInvoices;
-import ro.bogdanpanea.invoices.services.GeneratingProducts;
+import ro.bogdanpanea.invoices.services.InvoiceComparatorByDueDate;
+import ro.bogdanpanea.invoices.tasks.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -72,7 +72,36 @@ public class Main {
         //Subtask 5: Ordered invoices
         System.out.println("Subtask 5: Ordered invoices :");
 
+        OrderedInvoices orderedInvoices = new OrderedInvoices(invoicesList);
+        orderedInvoices.generateOrderedLists();
+        orderedInvoices.sortPendingInvoices();
+        orderedInvoices.sortPaidInvoices();
 
+        System.out.println("\n" + "Subtask 5: Pending invoices :" + "\n");
+
+        for (Invoice i : orderedInvoices.getPendingList()) {
+            System.out.println(i);
+        }
+
+        System.out.println("\n" + "Subtask 5: Paid invoices :" + "\n");
+
+        for (Invoice i : orderedInvoices.getPaidList()) {
+            System.out.println(i);
+        }
+
+//        List<Invoice> sortedInvoicesList=new ArrayList<Invoice>();
+//        sortedInvoicesList.addAll(orderedInvoices.getPendingList()); // add first arraylist
+//        sortedInvoicesList.addAll(orderedInvoices.getPaidList()); // add Second arraylist
+//
+//        for (Invoice i : sortedInvoicesList) {
+//            System.out.println(i);
+//        }
+
+
+        System.out.println("-----------------------------------------------------------------------------");
+
+        //Subtask 6: Text Search
+        System.out.println("Subtask 6: Text Search :");
 
     }
 }

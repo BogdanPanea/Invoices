@@ -1,4 +1,4 @@
-package ro.bogdanpanea.invoices.services;
+package ro.bogdanpanea.invoices.tasks;
 
 import ro.bogdanpanea.invoices.POJOs.Company;
 import ro.bogdanpanea.invoices.POJOs.Invoice;
