@@ -1,6 +1,7 @@
 package ro.bogdanpanea.invoices;
 
 
+import ro.bogdanpanea.invoices.Exceptions.InvoiceException;
 import ro.bogdanpanea.invoices.POJOs.Company;
 import ro.bogdanpanea.invoices.POJOs.Invoice;
 import ro.bogdanpanea.invoices.POJOs.Product;
@@ -17,7 +18,7 @@ public class Main {
         // Subtask 1: Generate Companies
         System.out.println("Subtask 1: Generate Companies :");
 
-        String[] names = {"a", "b", "c", "d", "e", "f", "g", "h"};
+        String[] names = {"Romanian", "Bulgarian", "Serbian", "European", "Food", "Electricity", "Incorporated", "Construction"};
         GeneratingCompanies generatingCompanies = new GeneratingCompanies();
         generatingCompanies.generateCompanies(names);
         for (Company company : generatingCompanies.getCompanyList()) {
@@ -103,5 +104,20 @@ public class Main {
         //Subtask 6: Text Search
         System.out.println("Subtask 6: Text Search :");
 
+        TextSearch textSearch = new TextSearch("cor", invoicesList);
+        try {
+            textSearch.filterInvoices();
+        } catch (InvoiceException e) {
+            System.out.println(e.getMessage());
+        }
+
+        for (Invoice i : textSearch.getInvoicesTextMatch()) {
+            System.out.println(i);
+        }
+
+        System.out.println("-----------------------------------------------------------------------------");
+
+        //Subtask 7: Editing
+        System.out.println("Subtask 7: Editing :");
     }
 }

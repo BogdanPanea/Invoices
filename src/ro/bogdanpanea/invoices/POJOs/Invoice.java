@@ -12,6 +12,7 @@ public class Invoice {
     private LocalDate dueDate;
     private LocalDate paidDate;
     private boolean duplicate;
+    private int rank;
 
     public Invoice(int invoiceNumber, Company seller, List<Product> products, LocalDate dueDate, LocalDate paidDate) {
         this.invoiceNumber = invoiceNumber;
@@ -64,8 +65,16 @@ public class Invoice {
         return paidDate;
     }
 
+    public int getRank() {
+        return rank;
+    }
+
     public void setInvoiceNumber(int invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 
     @Override
