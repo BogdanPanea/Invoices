@@ -77,6 +77,10 @@ public class Invoice {
         this.rank = rank;
     }
 
+    public void setPaidDate(LocalDate paidDate) {
+        this.paidDate = paidDate;
+    }
+
     @Override
     public String toString() {
         return "Invoice{" +

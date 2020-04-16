@@ -104,7 +104,7 @@ public class Main {
         //Subtask 6: Text Search
         System.out.println("Subtask 6: Text Search :");
 
-        TextSearch textSearch = new TextSearch("cor", invoicesList);
+        TextSearch textSearch = new TextSearch("ood", invoicesList);
         try {
             textSearch.filterInvoices();
         } catch (InvoiceException e) {
@@ -119,5 +119,29 @@ public class Main {
 
         //Subtask 7: Editing
         System.out.println("Subtask 7: Editing :");
+
+        System.out.println("\n" + "Invoice before payment :" + "\n");
+
+        System.out.println(invoicesList.get(0));
+
+        InvoicePay invoicePay = new InvoicePay(invoicesList.get(0));
+        invoicePay.payInvoice();
+
+        System.out.println("\n" + "Invoice after payment :" + "\n");
+
+        System.out.println(invoicesList.get(0));
+
+//        for (Invoice i : invoicesList) {
+//            System.out.println(i);
+//        }
+
+        System.out.println("-----------------------------------------------------------------------------");
+
+        //Subtask 8: Persistency
+        System.out.println("Subtask 8: Persistency :");
+
+
+
+
     }
 }
